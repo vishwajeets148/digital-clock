@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clock</title>
+   
+</head>
+<body>
+    <style>
+   * {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body{
+	  background-image: url("./clock.jpg");
+	 width: 100% 100%;
+	 background-size: cover;
+
+
+}
+
+
+.clock{
+	background-color: rgb(0, 0, 0, 0.8);
+	margin: auto;
+	padding: 20px;
+	width: 500px;
+	
+	border: 2px red solid;
+	border-radius: 5px;
+	margin-top: 40px;
+	text-align: center;
+	border: none;
+
+	
+
+
+}
+
+#time{
+	font-size: 50px;
+	color: white;
+    margin-top: 40px;
+}
+#date {
+	font-size: 30px;
+	color: white;
+    margin-top: 20px;
+}
+
+#para {
+	font-size: 38px;
+	color: white;
+    margin-top: 20px;
+}
+
+#time:hover {
+  font-size: 40px ;
+}
+
+
+
+    </style>
+    <div class="clock">
+        <p id= "para"> Digital Clock with DATE </p>
+        <p id="date"></p>
+        <p id="time"></p>
+           
+    </div>
+
+ 
+
+    <script type="text/javascript">
+        const WEEK = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]; // Corrected THRU to THU
+
+        function updateTime() {
+            var now = new Date();
+
+            document.getElementById("time").innerHTML =
+                zeroPadding(now.getHours(), 2) + ":" +
+                zeroPadding(now.getMinutes(), 2) + ":" +
+                zeroPadding(now.getSeconds(), 2);
+
+            document.getElementById("date").innerHTML =
+                now.getFullYear() + "-" +
+                zeroPadding(now.getMonth() + 1, 2) + "-" +
+                zeroPadding(now.getDate(), 2) + " " +
+                WEEK[now.getDay()];
+
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        function zeroPadding(num, digit) {
+            return String(num).padStart(digit, "0");
+        }
+    </script>
+</body>
+</html>
